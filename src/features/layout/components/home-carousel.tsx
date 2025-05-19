@@ -55,6 +55,8 @@ export default function HomeCarousel() {
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
 
+  console.log(process.env.NEXT_PUBLIC_API_URL)
+
   const totalSlides = carouselSlides.length
 
   const nextSlide = useCallback(() => {
