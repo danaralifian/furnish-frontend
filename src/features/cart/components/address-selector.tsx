@@ -12,9 +12,9 @@ import { addressSchema, type AddressFormValues } from "@/features/user/schemas/p
 import { FormInputField, FormCheckboxField, FormSelectField } from "@/features/forms/components/form-field"
 import { FormSubmitButton } from "@/features/forms/components/form-submit-button"
 import { useUser } from "@/features/user/context/user-context"
-import { useToast } from "@/components/ui/use-toast"
 import { Save } from "lucide-react"
 import type { Address } from "@/features/user/types"
+import { useToast } from "@/lib/hooks/use-toast"
 
 interface AddressSelectorProps {
   addresses: Address[]
@@ -59,6 +59,7 @@ export default function AddressSelector({
       form.reset()
       onAddNewToggle()
     } catch (error) {
+      console.error("Address update failed:", error)
       toast({
         title: "Failed to add address",
         description: "An error occurred. Please try again later.",

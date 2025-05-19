@@ -251,6 +251,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }
 
   const login = async (email: string, password: string): Promise<boolean> => {
+    console.log(email, password)
     // This is a mock implementation
     await new Promise((resolve) => setTimeout(resolve, 500))
 
@@ -270,6 +271,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     await new Promise((resolve) => setTimeout(resolve, 500))
 
     const { password, ...userInfo } = userData
+
+    console.log(password)
 
     const newUser: User = {
       id: uuidv4(),

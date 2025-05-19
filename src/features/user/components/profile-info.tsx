@@ -4,13 +4,13 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
 import { useUser } from "@/features/user/context/user-context"
 import { Form } from "@/components/ui/form"
 import { profileSchema, type ProfileFormValues } from "@/features/user/schemas/profile-schemas"
 import { FormInputField } from "@/features/forms/components/form-field"
 import { FormSubmitButton } from "@/features/forms/components/form-submit-button"
 import { Save } from "lucide-react"
+import { useToast } from "@/lib/hooks/use-toast"
 
 export default function ProfileInfo() {
   const { user, updateUser } = useUser()
@@ -36,6 +36,7 @@ export default function ProfileInfo() {
         description: "Your profile information has been updated successfully.",
       })
     } catch (error) {
+      console.error("Profile update failed:", error)
       toast({
         title: "Update failed",
         description: "An error occurred. Please try again later.",

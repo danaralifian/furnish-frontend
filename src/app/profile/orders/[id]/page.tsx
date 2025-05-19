@@ -98,7 +98,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
         <div className="mt-8 text-center py-12 border rounded-lg">
           <AlertCircle className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
           <h2 className="text-2xl font-semibold mb-2">Order Not Found</h2>
-          <p className="text-muted-foreground mb-6">We couldn't find the order you're looking for.</p>
+          <p className="text-muted-foreground mb-6">We couldn`t find the order you`re looking for.</p>
           <Link href="/profile?tab=orders">
             <Button>
               <ArrowLeft className="mr-2 h-4 w-4" />

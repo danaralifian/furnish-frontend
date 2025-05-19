@@ -7,12 +7,12 @@ import { LogIn } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
 import { useAuth } from "@/features/auth/hooks/use-auth"
 import { Form } from "@/components/ui/form"
 import { loginSchema, type LoginFormValues } from "@/features/auth/schemas/auth-schemas"
 import { FormInputField, FormCheckboxField } from "@/features/forms/components/form-field"
 import { FormSubmitButton } from "@/features/forms/components/form-submit-button"
+import { useToast } from "@/lib/hooks/use-toast"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -49,6 +49,7 @@ export default function LoginPage() {
         })
       }
     } catch (error) {
+      console.error("Login failed:", error)
       toast({
         title: "Login failed",
         description: "An error occurred. Please try again later.",
@@ -101,7 +102,7 @@ export default function LoginPage() {
                 Login
               </FormSubmitButton>
               <p className="mt-4 text-center text-sm text-muted-foreground">
-                Don't have an account?{" "}
+                Don`t have an account?{" "}
                 <Link href="/auth/register" className="text-primary hover:underline">
                   Register
                 </Link>

@@ -6,7 +6,7 @@ import type { Product } from "@/features/products/types"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/features/cart/context/cart-context"
 import { ShoppingCart } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/lib/hooks/use-toast"
 
 interface ProductCardProps {
   product: Product

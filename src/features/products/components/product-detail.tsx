@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Heart, Minus, Plus, Share2 } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/lib/hooks/use-toast"
 
 interface ProductDetailProps {
   id: string
@@ -75,9 +75,8 @@ export default function ProductDetail({ id }: ProductDetailProps) {
           {productImages.map((image, index) => (
             <button
               key={index}
-              className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md ${
-                activeImageIndex === index ? "ring-2 ring-primary" : "ring-1 ring-border"
-              }`}
+              className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md ${activeImageIndex === index ? "ring-2 ring-primary" : "ring-1 ring-border"
+                }`}
               onClick={() => setActiveImageIndex(index)}
             >
               <Image
@@ -132,27 +131,24 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                 <RadioGroupItem value="blue" id="blue" className="sr-only" />
                 <Label
                   htmlFor="blue"
-                  className={`h-8 w-8 rounded-full bg-blue-500 cursor-pointer ${
-                    selectedColor === "blue" ? "ring-2 ring-primary ring-offset-2" : ""
-                  }`}
+                  className={`h-8 w-8 rounded-full bg-blue-500 cursor-pointer ${selectedColor === "blue" ? "ring-2 ring-primary ring-offset-2" : ""
+                    }`}
                 />
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="black" id="black" className="sr-only" />
                 <Label
                   htmlFor="black"
-                  className={`h-8 w-8 rounded-full bg-black cursor-pointer ${
-                    selectedColor === "black" ? "ring-2 ring-primary ring-offset-2" : ""
-                  }`}
+                  className={`h-8 w-8 rounded-full bg-black cursor-pointer ${selectedColor === "black" ? "ring-2 ring-primary ring-offset-2" : ""
+                    }`}
                 />
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="gray" id="gray" className="sr-only" />
                 <Label
                   htmlFor="gray"
-                  className={`h-8 w-8 rounded-full bg-gray-500 cursor-pointer ${
-                    selectedColor === "gray" ? "ring-2 ring-primary ring-offset-2" : ""
-                  }`}
+                  className={`h-8 w-8 rounded-full bg-gray-500 cursor-pointer ${selectedColor === "gray" ? "ring-2 ring-primary ring-offset-2" : ""
+                    }`}
                 />
               </div>
             </RadioGroup>

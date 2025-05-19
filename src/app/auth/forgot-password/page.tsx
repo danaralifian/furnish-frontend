@@ -7,11 +7,11 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
 import { Form } from "@/components/ui/form"
 import { forgotPasswordSchema, type ForgotPasswordFormValues } from "@/features/auth/schemas/auth-schemas"
 import { FormInputField } from "@/features/forms/components/form-field"
 import { FormSubmitButton } from "@/features/forms/components/form-submit-button"
+import { useToast } from "@/lib/hooks/use-toast"
 
 export default function ForgotPasswordPage() {
   const { toast } = useToast()
@@ -40,6 +40,7 @@ export default function ForgotPasswordPage() {
         description: "Check your email for a link to reset your password.",
       })
     } catch (error) {
+      console.error("Password reset failed:", error)
       toast({
         title: "Request failed",
         description: "An error occurred. Please try again later.",
@@ -89,11 +90,11 @@ export default function ForgotPasswordPage() {
           <CardContent className="space-y-4">
             <div className="bg-muted/50 p-4 rounded-lg text-center">
               <p className="text-sm">
-                We've sent a password reset link to <strong>{submittedEmail}</strong>. Please check your email.
+                We`ve sent a password reset link to <strong>{submittedEmail}</strong>. Please check your email.
               </p>
             </div>
             <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">Didn't receive the email?</p>
+              <p className="text-sm text-muted-foreground">Didn`t receive the email?</p>
               <Button
                 variant="outline"
                 onClick={() => {

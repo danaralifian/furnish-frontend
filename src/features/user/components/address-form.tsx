@@ -29,6 +29,7 @@ export function AddressForm({
   compact = false,
 }: AddressFormProps) {
   const { addAddress, updateAddress } = useUser()
+  console.log(compact)
 
   const defaultValues: AddressFormValues = {
     name: initialData?.name || "",

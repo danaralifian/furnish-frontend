@@ -9,7 +9,7 @@ export default function EmptyCart() {
         <ShoppingCart className="h-8 w-8 text-muted-foreground" />
       </div>
       <h2 className="text-2xl font-semibold mb-2">Your cart is empty</h2>
-      <p className="text-muted-foreground mb-6">Looks like you haven't added anything to your cart yet.</p>
+      <p className="text-muted-foreground mb-6">Looks like you haven`t added anything to your cart yet.</p>
       <Link href="/">
         <Button>Continue Shopping</Button>
       </Link>

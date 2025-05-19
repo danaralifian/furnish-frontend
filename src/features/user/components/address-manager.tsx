@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
 import { useUser } from "@/features/user/context/user-context"
 import { Form } from "@/components/ui/form"
 import { addressSchema, type AddressFormValues } from "@/features/user/schemas/profile-schemas"
@@ -13,6 +12,7 @@ import { FormInputField, FormCheckboxField, FormSelectField } from "@/features/f
 import { FormSubmitButton } from "@/features/forms/components/form-submit-button"
 import { PlusCircle, Save, Trash2 } from "lucide-react"
 import type { Address } from "@/features/user/types"
+import { useToast } from "@/lib/hooks/use-toast"
 
 export default function AddressManager() {
   const { user, addAddress, updateAddress, removeAddress } = useUser()
@@ -66,6 +66,7 @@ export default function AddressManager() {
       }
       resetForm()
     } catch (error) {
+      console.error("Address update failed:", error)
       toast({
         title: editingId ? "Update failed" : "Add failed",
         description: "An error occurred. Please try again later.",
@@ -212,7 +213,7 @@ export default function AddressManager() {
         </div>
       ) : (
         <div className="text-center py-8 border rounded-lg bg-muted/20">
-          <p className="text-muted-foreground mb-4">You don't have any saved addresses yet.</p>
+          <p className="text-muted-foreground mb-4">You don`t have any saved addresses yet.</p>
           <Button onClick={() => setIsAddingNew(true)}>
             <PlusCircle className="mr-2 h-4 w-4" />
             Add New Address
