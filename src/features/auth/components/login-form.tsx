@@ -62,7 +62,7 @@ export default function LoginForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit)} id='login-form'>
                 <CardContent className="space-y-4">
                     <FormInputField
                         name="email"

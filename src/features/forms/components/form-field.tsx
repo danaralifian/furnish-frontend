@@ -44,13 +44,14 @@ export function FormInputField({
       name={name}
       render={({ field }) => (
         <FormItem className={className}>
-          <FormLabel>
+          <FormLabel htmlFor={field.name}>
             {label}
             {required && <span className="text-destructive ml-1">*</span>}
           </FormLabel>
           <FormControl>
             <div className="relative">
               <Input
+                id={field.name}
                 placeholder={placeholder}
                 type={inputType}
                 disabled={disabled}
