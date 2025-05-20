@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@/features/user/context/user-context";
 import { AuthService } from "../api/auth-service";
+import { removeCookie, setCookie } from "@/lib/cookie";
+import { COOKIE_NAME } from "@/lib/enum/cookie-name";
 
 export function useAuth() {
   const { user, logout: userLogout } = useUser();
@@ -34,13 +36,16 @@ export function useAuth() {
     checkAuth();
   }, [user]);
 
+  const setCookieAccessToken = (token: string) => {
+    setCookie(COOKIE_NAME.ACCESS_TOKEN, token);
+  };
+
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
       const res = await AuthService.signIn(email, password);
-      console.log(res);
       if (res) {
-        localStorage.setItem("token", "authenticated");
+        setCookieAccessToken(res.data?.accessToken || "");
         setIsAuthenticated(true);
       }
       return !!res.data;
@@ -60,7 +65,7 @@ export function useAuth() {
     try {
       const res = await AuthService.signUp(email, password);
       if (res) {
-        localStorage.setItem("token", "authenticated");
+        setCookieAccessToken(res.data?.accessToken || "");
         setIsAuthenticated(true);
       }
       return !!res;
@@ -74,7 +79,7 @@ export function useAuth() {
 
   const logout = () => {
     userLogout();
-    localStorage.removeItem("token");
+    removeCookie(COOKIE_NAME.ACCESS_TOKEN);
     setIsAuthenticated(false);
   };
 
