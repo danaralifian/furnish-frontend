@@ -1,3 +1,5 @@
+import { ApiResponse } from "../types/api-response";
+
 /**
  * A fetcher function that wraps the native `fetch` API and adds Next.js
  * App Router SSR caching support.
@@ -11,10 +13,10 @@
 export async function fetcher<T>(
   url: string,
   options?: RequestInit & { revalidate?: number | false }
-): Promise<T> {
+): Promise<ApiResponse<T>> {
   const revalidate = options?.revalidate;
 
-  const res = await fetch(`${process.env.BASE_API_URL}/${url}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
