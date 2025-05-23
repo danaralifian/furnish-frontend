@@ -1,4 +1,5 @@
 
+"use client"
 import { CardContent, CardFooter } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 import { FormInputField } from '@/features/forms/components/form-field'

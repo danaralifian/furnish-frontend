@@ -1,5 +1,3 @@
-"use client"
-
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import LoginForm from "@/features/auth/components/login-form"
 
